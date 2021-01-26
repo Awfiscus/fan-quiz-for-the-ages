@@ -12,3 +12,12 @@ h1 {
   margin: auto;
   display: block;
 }
+
+#scoreLink {
+  margin: 20px;
+}
+
+#timer {
+  float: right;
+  margin-right: 200px;
+}
