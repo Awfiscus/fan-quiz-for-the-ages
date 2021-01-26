@@ -18,9 +18,14 @@ function countDown() {
 
 //Variable Declariations
 var startButton = document.querySelector("#startButton")
-
+var startPage = document.querySelector("#startPage")
 //Functions
-
+function removeFirst() {
+    var parent = document.getElementById("body")
+    var child = document.getElementById("startPage")
+    parent.removeChild(child)
+}
 
 //Event Listeners
 startButton.addEventListener("click", countDown)
+startButton.addEventListener("click", removeFirst)
