@@ -1,0 +1,14 @@
+h1 {
+  text-align: center;
+  margin-top: 150px;
+}
+
+.intro {
+  text-align: center;
+  margin-top: 100px;
+}
+
+#startButton {
+  margin: auto;
+  display: block;
+}
