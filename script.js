@@ -14,6 +14,7 @@ var questions = [
 
 var currentQuestion = 0
 
+var userInitials = []
 
 //set up timer that starts when startButton is pushed
 var timer = document.querySelector("#timer")
@@ -81,12 +82,29 @@ function endOfGame() {
     gameOver.textContent = "Game Over!!"
     var body = document.getElementById("body")
     body.appendChild(gameOver)
-
+    var finalScore = document.createElement("h4")
+    finalScore.setAttribute("id", "finalScore")
+    finalScore.textContent = "Your Final score: " + secondsLeft
+    body.appendChild(finalScore)
     var initialInput = document.createElement("input")
-    initialInput.setAttribute("class", "initials")
-    body.appendChild(initialInput) 
+    initialInput.setAttribute("class", "initialsBar")
+    body.appendChild(initialInput)
+    var initials = document.createElement("h6")
+    initials.setAttribute("class", "initials")
+    initials.textContent = "Enter Your Initials"
+    finalScore.appendChild(initials)
+    console.log(initialInput);
+    var submitButton = document.createElement("button")
+    submitButton.setAttribute("class", "submit")
+    submitButton.textContent = "Submit HighScore"
+    body.appendChild(submitButton)
+    submitButton.addEventListener("click", function() {
+        var userInitials = initialInput.value;
+        localStorage.setItem("userInitials", userInitials)  
+    }) 
 }
 
 //Event Listeners
 startButton.addEventListener("click", countDown)
 startButton.addEventListener("click", removeFirst)
+

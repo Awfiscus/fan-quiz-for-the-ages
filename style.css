@@ -26,3 +26,18 @@ h1 {
   display: block;
   margin: auto;
 }
+
+h4 {
+  text-align: center;
+}
+
+.initialsBar {
+  display: block;
+  margin: auto;
+}
+
+.submit {
+  display: block;
+  margin: auto;
+  margin-top: 15px;
+}
