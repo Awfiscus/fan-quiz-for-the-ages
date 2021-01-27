@@ -21,3 +21,8 @@ h1 {
   float: right;
   margin-right: 200px;
 }
+
+.answer {
+  display: block;
+  margin: auto;
+}
