@@ -28,7 +28,10 @@ function countDown() {
         if(secondsLeft === 0) {
             clearInterval(timerInterval);
 
-            alert("Times Up")
+            alert("Times Up");
+        }
+        if(currentQuestion >= 2) {
+            clearInterval(timerInterval)
         }
     }, 1000)
 }
@@ -49,16 +52,17 @@ function removeFirst() {
 }
 
 function correctAnswer() {
-    currentQuestion++
-    body.clear()
+    currentQuestion++;
+    if(currentQuestion >= 2) {
+    endOfGame()  
+    } else {
     createQuestion()
+    }
 }
 
 
 function createQuestion() {
     var firstH1 = document.createElement("h1")
-    console.log(firstH1);
-    firstH1.setAttribute("id", "question1")
     firstH1.textContent = questions[currentQuestion].title
     var body = document.getElementById("body")
     body.appendChild(firstH1)
@@ -71,6 +75,17 @@ function createQuestion() {
     body.appendChild(button)
    }
 }   
+
+function endOfGame() {
+    var gameOver = document.createElement("h1")
+    gameOver.textContent = "Game Over!!"
+    var body = document.getElementById("body")
+    body.appendChild(gameOver)
+
+    var initialInput = document.createElement("input")
+    initialInput.setAttribute("class", "initials")
+    body.appendChild(initialInput) 
+}
 
 //Event Listeners
 startButton.addEventListener("click", countDown)
