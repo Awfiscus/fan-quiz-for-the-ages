@@ -1,3 +1,5 @@
+
+//this is my object array for the questions in the quiz
 var questions = [
     {
         title: "How Many Members does Judah and The Lion have?",
@@ -27,9 +29,8 @@ var questions = [
 
 ]
 
+//variable used for the index to determine which question is used
 var currentQuestion = 0
-
-var userInitials = []
 
 var highScores = []
 
@@ -39,6 +40,7 @@ var timer = document.querySelector("#timer")
 
 var secondsLeft = 80;
 
+//this function controls the time left in the game and alerts the user if he runs out of time and clears the time interval if all 5 questions have been answered.
 function countDown() {
     var timerInterval = setInterval(function() {
         secondsLeft--;
@@ -60,15 +62,15 @@ var startButton = document.querySelector("#startButton")
 var startPage = document.querySelector("#startPage")
 var highScoreList = document.querySelector("#userEnteredData")
 var highScoreButton = document.getElementById("#highScoreButton")
-//Functions
 
-//This function removes the text from the first page
+//This function hides the text from the first page and starts the createQuestion function
 function removeFirst() {
     $("#startPage").hide();
     createQuestion()
 
 }
 
+//this function goes through the questions in the array added 1 to index of currentQuestion each time
 function correctAnswer() {
     currentQuestion++;
     if(currentQuestion >= 5) {
@@ -79,7 +81,7 @@ function correctAnswer() {
     }
 }
 
-
+//this function creates the questions and removes them all in one
 function createQuestion() {
     var firstH1 = document.createElement("h1")
     firstH1.textContent = questions[currentQuestion].title
@@ -90,6 +92,7 @@ function createQuestion() {
     var button = document.createElement("button")
     button.setAttribute("class", "answer")
     button.textContent = questions[currentQuestion].answers[i]
+    //upon clicking the answer, if it is incorrect 15s is subtracted from the time left. Then the question and answers are hidden and a new one is revealed.
     button.addEventListener("click", function() {
         if(this.textContent !== questions[currentQuestion].answer) {
             (secondsLeft -= 15)
@@ -102,7 +105,7 @@ function createQuestion() {
     body.appendChild(button)
    }
 }   
-
+//function for the end of game html and code
 function endOfGame() {
     //creates html for end of game page
     var gameOver = document.createElement("h1")
@@ -150,6 +153,7 @@ function endOfGame() {
     })
 }
 
+//could not get this portion to work properly
 function formHighScores() {
     var scoresList = document.querySelector("h3")
     var highScoreButton = document.getElementById("#highScoreButton")
