@@ -1,20 +1,38 @@
 var questions = [
     {
         title: "How Many Members does Judah and The Lion have?",
-        answer: "4",
+        answer: "3",
         answers: ["4", "3", "2", "6"]
     },
     {
         title: "On a scale of 1-10 how awesome are they?",
-        answer: "8",
-        answers: ["8", "6", "2", "5"]
+        answer: "10",
+        answers: ["10", "6", "2", "5"]
     },
+    {
+        title: "Who is the lead singer of Judah and the Lion?",
+        answer: "Judah Akers",
+        answers: ["Judah Akers", "Brian Macdonald", "Nate Zuercher", "Andrew Fiscus"]
+    },
+    {
+        title: "Where did they first meet?",
+        answer: "Nashville",
+        answers: ["New York", "Pittsburg", "Nashville", "Denver"]
+    },
+    {
+        title: "The Ep Take it All Back was #1 on Billboards Alternative songs charts for how many weeks?",
+        answer: "3",
+        answers: ["1", "2", "3", "4"]
+    }
 
 ]
 
 var currentQuestion = 0
 
 var userInitials = []
+
+var highScores = []
+
 
 //set up timer that starts when startButton is pushed
 var timer = document.querySelector("#timer")
@@ -31,7 +49,7 @@ function countDown() {
 
             alert("Times Up");
         }
-        if(currentQuestion >= 2) {
+        if(currentQuestion >= 5) {
             clearInterval(timerInterval)
         }
     }, 1000)
@@ -40,7 +58,8 @@ function countDown() {
 //Variable Declariations
 var startButton = document.querySelector("#startButton")
 var startPage = document.querySelector("#startPage")
-
+var highScoreList = document.querySelector("#userEnteredData")
+var highScoreButton = document.getElementById("#highScoreButton")
 //Functions
 
 //This function removes the text from the first page
@@ -52,7 +71,7 @@ function removeFirst() {
 
 function correctAnswer() {
     currentQuestion++;
-    if(currentQuestion >= 2) {
+    if(currentQuestion >= 5) {
     endOfGame()  
     }
     else {
@@ -113,9 +132,10 @@ function endOfGame() {
     body.appendChild(submitButton)
     //adds event listener to the submit bar to save the value applied to it and saves it to local storage
     submitButton.addEventListener("click", function() {
-        var userInitials = initialInput.value;
-        localStorage.setItem("userInitials", userInitials)
+        highScores.push(initialInput.value + secondsLeft)
+        localStorage.setItem("scores", highScores)
         
+
         $(gameOver).hide()
         $(finalScore).hide()
         $(initialInput).hide()
@@ -125,9 +145,24 @@ function endOfGame() {
         var finalMessage = document.createElement("h1")
         finalMessage.textContent = "Reload and Try Again. High Scores are saved!"
         body.appendChild(finalMessage)
-    }) 
+
+        
+    })
 }
+
+function formHighScores() {
+    var scoresList = document.querySelector("h3")
+    var highScoreButton = document.getElementById("#highScoreButton")
+    var resetButton = document.querySelector("#resetButton")
+    var highScores = localStorage.getItem("scores")
+
+    scoresList.textContent = highScores
+
+}
+
+
 
 //Event Listeners
 startButton.addEventListener("click", countDown)
 startButton.addEventListener("click", removeFirst)
+

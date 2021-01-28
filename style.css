@@ -41,3 +41,26 @@ h4 {
   margin: auto;
   margin-top: 15px;
 }
+
+#highScoreButton {
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+}
+
+#userEnteredData {
+  display: block;
+  margin: auto;
+  font-size: large;
+}
+
+#clearButton {
+  display: block;
+  margin: auto;
+}
+
+h3 {
+  text-align: center;
+  display: block;
+  margin: auto;
+}
